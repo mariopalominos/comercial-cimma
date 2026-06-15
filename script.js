@@ -207,3 +207,59 @@ if (impactSection) {
     if (footerBlock && footerSocials.length > 0) {
         footerObserver.observe(footerBlock);
     }
+
+    // ==========================================================================
+// LÓGICA DEL HERO CAROUSEL PREMIUM
+// ==========================================================================
+document.addEventListener('DOMContentLoaded', () => {
+    const slides = document.querySelectorAll('.hero-slide');
+    const indicators = document.querySelectorAll('.indicator');
+    const prevBtn = document.getElementById('heroPrev');
+    const nextBtn = document.getElementById('heroNext');
+    let currentSlide = 0;
+    const slideInterval = 5000; // 5 segundos por imagen
+
+    const showSlide = (index) => {
+        // Remover clases activas
+        slides.forEach(slide => slide.classList.remove('active'));
+        indicators.forEach(dot => dot.classList.remove('active'));
+
+        // Activar slide seleccionado
+        slides[index].classList.add('active');
+        indicators[index].classList.add('active');
+        currentSlide = index;
+    };
+
+    const nextSlide = () => {
+        let index = (currentSlide + 1) % slides.length;
+        showSlide(index);
+    };
+
+    const prevSlide = () => {
+        let index = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(index);
+    };
+
+    // Eventos de botones
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+
+    // Eventos de indicadores
+    indicators.forEach((dot, idx) => {
+        dot.addEventListener('click', () => showSlide(idx));
+    });
+
+    // Auto-reproducción automática
+    let autoSlide = setInterval(nextSlide, slideInterval);
+
+    // Detener auto-play cuando el usuario interactúa
+    const resetTimer = () => {
+        clearInterval(autoSlide);
+        autoSlide = setInterval(nextSlide, slideInterval);
+    };
+
+    [prevBtn, nextBtn].forEach(btn => {
+        if(btn) btn.addEventListener('click', resetTimer);
+    });
+});
+

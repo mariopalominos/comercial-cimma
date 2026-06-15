@@ -30,18 +30,41 @@
         </nav>
     </header>
 
-    <!-- Hero Section con la imagen de portada 2.jpg -->
+    <section class="hero" id="heroSection">
     
-    <section class="hero">
-        <div class="hero-overlay" id="heroFader"></div>
+    <div class="hero-slider">
+        <div class="hero-slide active" style="background-image: url('G1.webp');"></div>
+        <div class="hero-slide" style="background-image: url('G2.webp');"></div>
+        <div class="hero-slide" style="background-image: url('G3.webp');"></div>
+        <div class="hero-slide" style="background-image: url('G4.webp');"></div>
+        <div class="hero-slide" style="background-image: url('G5.webp');"></div>
+        <div class="hero-slide" style="background-image: url('G6.webp');"></div>
+        <div class="hero-slide" style="background-image: url('G7.webp');"></div>
+    </div>
+
+    <div class="hero-overlay" id="heroFader" style="background: linear-gradient(rgba(10, 10, 10, 0.6) 0%, rgb(10, 10, 10) 95%);"></div>
+        
         <div class="hero-content">
             <h1>Tú solución en <span>neumáticos industriales</span> y llantas para maquinaria</h1>
             <p> Entregamos un servicio de alta calidad y una sólida capacidad de fabricación. Ofrecemos los mejores productos del mercado brindando soluciones a nuestros clientes.</p>
             <div class="hero-actions">
                 <a href="productos.html" class="btn-main">Explorar Catálogo</a>
         </div>
-        </div>
-    </section>
+     </div>
+
+     <button class="hero-nav prev" id="heroPrev" aria-label="Anterior">&#10094;</button>
+    <button class="hero-nav next" id="heroNext" aria-label="Siguiente">&#10095;</button>
+
+    <div class="hero-indicators">
+        <span class="indicator active" data-index="0"></span>
+        <span class="indicator" data-index="1"></span>
+        <span class="indicator" data-index="2"></span>
+        <span class="indicator" data-index="3"></span>
+        <span class="indicator" data-index="4"></span>
+        <span class="indicator" data-index="5"></span>
+        <span class="indicator" data-index="6"></span>
+    </div>
+   </section>
 
     <!-- Banner Infinito en Movimiento Continuo (Marcas Patrocinadoras) -->
     <div class="brands-ticker">
