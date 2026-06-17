@@ -1153,6 +1153,62 @@ header {
     width: 30px;
 }
 
+@media (max-width: 992px) {
+    .hero {
+        min-height: 70vh;
+        padding: 0 4%;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        padding: 0 12px;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(2rem, 3.2vw, 2.8rem);
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+        margin-bottom: 24px;
+    }
+
+    .hero-slide {
+        background-position: center center;
+    }
+}
+
 @media (max-width: 768px) {
-    .hero-nav { display: none; } /* Ocultar flechas en móvil para limpieza */
+    .hero {
+        min-height: 65vh;
+        padding: 0 3%;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+        line-height: 1.1;
+    }
+
+    .hero-content p {
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+    }
+
+    .hero-actions .btn-main {
+        padding: 12px 24px;
+    }
+
+    .hero-nav {
+        display: none; /* Ocultar flechas en móvil para limpieza */
+    }
+
+    .hero-indicators {
+        bottom: 18px;
+        gap: 10px;
+    }
 }
