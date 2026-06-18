@@ -9,6 +9,7 @@
     --brand-yellow: #f1c40f; /* El color exacto extraído de 1.png */
     --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --whatsapp-icon-offset: 0.2px; /* Ajustable: valores positivos bajan el icono, negativos lo suben */
 }
 
 * {
@@ -480,19 +481,43 @@ header {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     z-index: 9999;
     text-decoration: none;
     transition: var(--transition);
+    border: none;
+    padding: 0;
+    outline: none;
+    line-height: 0;
+    cursor: pointer;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 .whatsapp-float svg {
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 34px;
     fill: currentColor;
+    display: block;
+    shape-rendering: geometricPrecision;
+}
+
+/* Aplicar desplazamiento al trazado interno para centrar visualmente */
+.whatsapp-float svg path,
+.whatsapp-float svg g {
+    transform: translateY(var(--whatsapp-icon-offset));
+    -webkit-transform: translateY(var(--whatsapp-icon-offset));
+    transform-origin: 50% 50%;
+}
+
+.whatsapp-float:focus {
+    outline: none;
+    box-shadow: 0 0 0 6px rgba(37, 211, 102, 0.09);
 }
 
 /* Animación de destaque al posar el puntero solicitado */
@@ -500,6 +525,87 @@ header {
     transform: scale(1.2) rotate(15deg);
     background-color: #128c7e;
     box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
+}
+
+.whatsapp-float.active {
+    transform: scale(1.2);
+    background-color: #128c7e;
+}
+
+/* Contenedor del menú flotante de WhatsApp */
+.whatsapp-menu {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999;
+    font-family: var(--font-main);
+}
+
+/* Contenedor de opciones de vendedores */
+.whatsapp-options {
+    position: absolute;
+    bottom: 75px;
+    right: 0;
+    background-color: rgba(20, 20, 20, 0.95);
+    border: 1px solid rgba(37, 211, 102, 0.3);
+    border-radius: 12px;
+    overflow: hidden;
+    display: none;
+    flex-direction: column;
+    min-width: 280px;
+    box-shadow: 0 6px 30px rgba(37, 211, 102, 0.2);
+    backdrop-filter: blur(10px);
+    animation: slideUp 0.3s ease-out;
+}
+
+.whatsapp-options.active {
+    display: flex;
+}
+
+/* Opción individual de vendedor */
+.whatsapp-option {
+    display: flex;
+    flex-direction: column;
+    padding: 14px 18px;
+    text-decoration: none;
+    color: var(--text-light);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: var(--transition);
+    background-color: transparent;
+}
+
+.whatsapp-option:last-child {
+    border-bottom: none;
+}
+
+.whatsapp-option:hover {
+    background-color: rgba(37, 211, 102, 0.12);
+    padding-left: 24px;
+}
+
+.option-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--brand-yellow);
+    margin-bottom: 4px;
+}
+
+.option-phone {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-family: 'Courier New', monospace;
+}
+
+/* Animación de entrada */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* ==========================================================================

@@ -15,6 +15,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
+    // 1.5 MENÚ FLOTANTE DE WHATSAPP CON VENDEDORES
+    // ==========================================
+    const whatsappToggle = document.getElementById('whatsappToggle');
+    const whatsappOptions = document.getElementById('whatsappOptions');
+    const whatsappMenu = document.getElementById('whatsappMenu');
+
+    if (whatsappToggle && whatsappOptions) {
+        // Toggle al hacer clic en el botón principal
+        whatsappToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            whatsappOptions.classList.toggle('active');
+            whatsappToggle.classList.toggle('active');
+            whatsappToggle.setAttribute('aria-expanded', whatsappOptions.classList.contains('active'));
+        });
+
+        // Cerrar menú al hacer clic fuera
+        document.addEventListener('click', (e) => {
+            if (!whatsappMenu.contains(e.target)) {
+                whatsappOptions.classList.remove('active');
+                whatsappToggle.classList.remove('active');
+                whatsappToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Cerrar menú al hacer clic en una opción
+        whatsappOptions.querySelectorAll('.whatsapp-option').forEach(option => {
+            option.addEventListener('click', () => {
+                whatsappOptions.classList.remove('active');
+                whatsappToggle.classList.remove('active');
+                whatsappToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
+
+    // ==========================================
     // 2. EFECTO FADER DINÁMICO (HERO COMPONENT)
     // ==========================================
     const heroFader = document.getElementById('heroFader');
