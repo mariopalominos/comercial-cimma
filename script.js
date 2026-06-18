@@ -199,6 +199,41 @@ const observerOptions = {
     threshold: 0.5 // Se activa cuando el 50% de la sección es visible
 };
 
+    // ==========================================================================
+// 5. MANEJADOR DEL FORMULARIO DE COTIZACIÓN CON MAILTO
+// ==========================================================================
+const contactForm = document.getElementById('contactForm');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Obtener valores del formulario
+        const name = document.getElementById('name').value.trim();
+        const company = document.getElementById('company').value.trim();
+        const req = document.getElementById('req').value.trim();
+        const vendorEmail = 'francocimma@yahoo.es';
+        
+        // Validar que los campos no estén vacíos
+        if (!name || !company || !req) {
+            alert('Por favor, completa todos los campos.');
+            return;
+        }
+        
+        // Construir asunto y cuerpo del correo
+        const subject = 'Solicitud de Cotización de Maquinaria';
+        const body = `Nombre: ${name}\nEmpresa / RUT: ${company}\n\nRequerimiento de Maquinaria:\n${req}`;
+        
+        // Abrir cliente de correo con mailto
+        window.location.href = `mailto:${vendorEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        
+        // Limpiar formulario después de un pequeño delay
+        setTimeout(() => {
+            contactForm.reset();
+        }, 500);
+    });
+}
+
 const statsObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
