@@ -9,7 +9,10 @@
     --brand-yellow: #f1c40f; /* El color exacto extraído de 1.png */
     --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    --whatsapp-icon-offset: 0.2px; /* Ajustable: valores positivos bajan el icono, negativos lo suben */
+    --whatsapp-icon-offset: -0.8px; /* deprecated: usa --whatsapp-icon-offset-x/y */
+    --whatsapp-icon-offset-x: 1px; /* Ajustable: valores positivos mueven a la derecha */
+    --whatsapp-icon-offset-y: -1px; /* Ajustable: valores positivos bajan el icono, negativos lo suben */
+    --whatsapp-icon-scale: 0.92; /* Escala del icono blanco interno: <1 reduce tamaño */
 }
 
 * {
@@ -510,9 +513,11 @@ header {
 /* Aplicar desplazamiento al trazado interno para centrar visualmente */
 .whatsapp-float svg path,
 .whatsapp-float svg g {
-    transform: translateY(var(--whatsapp-icon-offset));
-    -webkit-transform: translateY(var(--whatsapp-icon-offset));
+    transform: translate(var(--whatsapp-icon-offset-x), var(--whatsapp-icon-offset-y)) scale(var(--whatsapp-icon-scale));
+    -webkit-transform: translate(var(--whatsapp-icon-offset-x), var(--whatsapp-icon-offset-y)) scale(var(--whatsapp-icon-scale));
     transform-origin: 50% 50%;
+    transform-box: fill-box;
+    -webkit-transform-box: fill-box;
 }
 
 .whatsapp-float:focus {
