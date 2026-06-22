@@ -212,7 +212,7 @@ if (contactForm) {
         const name = document.getElementById('name').value.trim();
         const company = document.getElementById('company').value.trim();
         const req = document.getElementById('req').value.trim();
-        const vendorEmail = 'francocimma@yahoo.es';
+        const vendorEmail = 'contacto@cimmaspa.cl';
         
         // Validar que los campos no estén vacíos
         if (!name || !company || !req) {
