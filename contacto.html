@@ -29,18 +29,19 @@
     <section class="section-padding" style="margin-top:90px;">
         <h2 class="section-title">Formulario de Cotización</h2>
         <div class="contact-wrapper">
-            <form id="contactForm" class="contact-form" action="#" method="POST">
+            <form id="contactForm" class="contact-form" name="contact" action="/gracias.html" method="POST" data-netlify="true">
+                <input type="hidden" name="form-name" value="contact">
                 <div class="form-group">
                     <label for="name">Nombre Completo</label>
-                    <input type="text" id="name" class="form-control" required>
+                    <input type="text" id="name" name="name" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label for="company">Empresa / Rut</label>
-                    <input type="text" id="company" class="form-control" required>
+                    <input type="text" id="company" name="company" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label for="req">Requerimiento de Maquinaria (Ej: Grúa Horquilla, Diámetro)</label>
-                    <textarea id="req" class="form-control" rows="4" required></textarea>
+                    <textarea id="req" name="req" class="form-control" rows="4" required></textarea>
                 </div>
                 <button type="submit" class="btn-main" style="background:var(--brand-yellow); border:none; padding:12px 30px; font-weight:700; cursor:pointer; width:100%;">Enviar Solicitud</button>
             </form>
